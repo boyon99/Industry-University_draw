@@ -18,8 +18,14 @@
   "homepage": "https://github.com/boyon99/Industry-University_draw#readme",
   "dependencies": {
     "body-parser": "^1.20.0",
+    "ejs": "^3.1.8",
     "express": "^4.18.1",
+    "express-session": "^1.17.3",
     "mongodb": "^3.6.4",
-    "mongoose": "^6.6.1"
+    "mongoose": "^6.6.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^2.0.20",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
   }
 }
