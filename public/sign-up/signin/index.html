@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>로그인</title>
+ <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+ <link rel="stylesheet" href="../css/signin.css">
+ <script defer src="../js/signin.js"></script>
+</head>
+<body>
+ <div class="container">
+   <div class="content">
+     <!— HEADER —>
+     <header>
+       <h2>로그인</h2>
+       <h3>그리다를 편리하게 이용하세요</h3>
+     </header> 
+ 
+     <!— INPUT —>
+     <form action="/login" method="POST">
+     <section>
+       <input class="box" id="signin-id" name="id" type="text" placeholder="아이디 입력(6~20자)"/>
+       <input class="box" id="signin-pw" name="pw" type="password" placeholder="비밀번호 입력 (문자, 숫자, 특수문자 포함 8~20자)"/>
+     </section>
+     <button id="signin">로그인</button>
+     </form>
+     <div class="exist">
+       <span>회원이 아니시라면?</span>
+       <a href="../index.html">회원가입 하러가기</a>
+     </div>
+     </div>
+   </div>
+ </div>
+</body>
+</html>
