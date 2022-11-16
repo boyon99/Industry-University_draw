@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>사용자 설정</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="../layout/styles/layout_set.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body id="top">
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- Top Background Image Wrapper -->
+<div class="bgded overlay" style="background-image:url('../images/demo/backgrounds/home.png');">
+  <!-- ################################################################################################ -->
+  <div class="wrapper row1">
+    <header id="header" class="hoc clear"> 
+      <!-- ################################################################################################ -->
+      <div id="logo" class="fl_left">
+	<div class="logo">
+        <h1><img src="../images/demo/logo.svg"
+		style= "margin-right: 6px; width:30px; height:30px;">
+	<a href="/home">그리다</a></h1></div>
+      </div>
+      <!-- ################################################################################################ -->
+      <nav id="mainav" class="fl_right">
+        <ul class="clear">
+          <li><a href="/myhome">나의 추모공간</a></li>
+        </ul>
+      </nav>
+      <!-- ################################################################################################ -->
+    </header>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div id="breadcrumb" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+</div>
+<!-- End Top Background Image Wrapper -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <!-- main body -->
+    <div class="sidebar one_quarter first">
+      <div class="sdb_holder">
+        <img class="img" src="../images/backup/<%= profile[0].f_image %>" style="width:164px; height:164px;">
+        
+          <p><br>
+          <img class="img" src="../images/demo/id.png" style="width:20px; height:20px;">
+          <%= profile[0].f_name %><br>
+          <img class="img" src="../images/demo/breed.png" style="width:20px; height:20px; "> <%= profile[0].f_tribe %> (<%= profile[0].f_gender %>)<br>
+          <img class="img" src="../images/demo/anniversary.png" style="width:20x; height:20px;"> <%= profile[0].f_birthday %>
+        </p>
+
+      </div>
+      <nav class="sdb_holder">
+        <ul>
+          <li><a href="/myhome:<%=login.id%>">홈</a></li>
+          <li><a href="/timeline:<%=login.id%>">타임라인</a></li>
+          <li><a href="/gallery:<%=login.id%>">갤러리</a>
+          <li><a href="/setting">사용자 설정</a>
+            <ul>
+              <li><a href="/request">요청</a></li>
+            </ul>
+      </nav>
+    </div>
+    <div class="content three_quarter">
+
+
+
+           <section id="content_setting">
+                <div class="range_set">공개범위 설정</div>
+ <div class="select">
+     <input type="radio" id="select" name="shop"><label for="select">전체</label><br>: 공개 추모식에 추천합니다. 이 옵션을 사용하면 <b>그리다를 이용하는 사용자 모두</b>가 웹 사이트에 쉽게 방문 할 수 있습니다. <br><br><br>
+     <input type="radio" id="select2" name="shop"><label for="select2">일부공개</label><br>: 조용한 추모식에 추천합니다. 이 옵션을 사용하면 <b>사이트의 링크를 가진 사용자만</b>이 웹 사이트에 방문 할 수 있습니다.<br><br><br>
+     <input type="radio" id="select3" name="shop"><label for="select3">비공개</label><br>: 혼자만의 추억을 그리고 싶은 추모식에 추천합니다. 이 옵션을 사용하면 <b>관리자만</b>이 웹 사이트에 방문 할 수 있습니다. <br><br>
+</div>
+                <br><br>
+                <div class="share_set">공유 링크</div>
+                <div class="share_select">
+                    <div class="link_rel">
+                        <input id="copy_text" value="localhost:8080/guest/myhome?id=<%=login.id%>" readonly>
+                    </div>
+                    <button class="link_copy" onclick="linkCopy()">URL복사</button>
+                </div>
+  
+
+                <div class="delete_set">추모관 지우기</div><p>※ 버튼을 누르면 추모관이 삭제됩니다!</p>
+                <button class="openBtn">추모관 삭제하기</button>
+                <div class="modal hidden">
+                  <div class="bg"></div>
+                  <div class="modalBox">
+                    <p>추모관이 삭제되면 개인정보보호를 위해 삭제된 데이터는 지체없이 서버에서 파기됩니다.
+                      따라서 복구가 되지 않으니 신중히 결정해 주실 것을 부탁드리며, 이는 개인정보를 보호하기 위한 정책인 점 너그러운 양해 부탁드립니다.</p><br>
+                      
+                      <div style="display: inline-block">
+                      <button class="">삭제</button></div>
+                    <div style="display: inline-block">
+                    <button class="closeBtn">닫기</button></div>
+                  </div>
+                </div>
+                
+                <script>
+                  const open = () => {
+                    document.querySelector(".modal").classList.remove("hidden");
+                  }
+                
+                  const close = () => {
+                    document.querySelector(".modal").classList.add("hidden");
+                  }
+                
+                  document.querySelector(".openBtn").addEventListener("click", open);
+                  document.querySelector(".closeBtn").addEventListener("click", close);
+                  document.querySelector(".bg").addEventListener("click", close);
+                
+                </script>
+
+	</div>
+            </section>
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+<!-- ################################################################################################ -->
+<div class="wrapper row5">
+  <div id="copyright" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <p class="fl_left">Copyright &copy; 2022 - All Rights Reserved - <a href="#">그리다</a></p>
+    <p class="fl_right">당신의 삶을 <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">그리다</a></p>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="../layout/scripts/jquery.min.js"></script>
+<script src="../layout/scripts/jquery.backtotop.js"></script>
+<script src="../layout/scripts/jquery.mobilemenu.js"></script>
+<script src="../layout/scripts/private_site_manager.js"></script>
+</body>
+</html>

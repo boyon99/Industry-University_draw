@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <title>추모관 검색</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="../layout/styles/layout_search.css" rel="stylesheet" type="text/css" media="all">
+</head>
+
+<body id="top">
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- Top Background Image Wrapper -->
+  <div class="bgded overlay" style="background-image:url('../images/demo/backgrounds/dog.jpg');">
+    <!-- ################################################################################################ -->
+    <div class="wrapper row1">
+      <header id="header" class="hoc clear">
+        <!-- ################################################################################################ -->
+        <div id="logo" class="fl_left">
+          <div class="logo">
+            <h1><img src="../images/demo/logo.svg" style="margin-right: 6px; width:30px; height:30px;">
+              <a href="/">그리다</a>
+            </h1>
+          </div>
+        </div>
+        <!-- ################################################################################################ -->
+        <nav id="mainav" class="fl_right">
+          <ul class="clear">
+            <li><a href="../pages/myhome_guest.html">추모공간 이용방법</a></li>
+            <li><a href="/login">로그인</a></li>
+            <li><a href="/signup">가입하기</a></li>
+          </ul>
+        </nav>
+        <!-- ################################################################################################ -->
+      </header>
+    </div>
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <div id="pageintro" class="hoc clear">
+      <!-- ################################################################################################ -->
+      <article>
+        <h3 class="heading">추모하고 싶은<br>동물을 찾아보세요</h3>
+        <p>반려동물의 정보를 입력하세요</p>
+        <footer>
+          <form class="group">
+            <fieldset>
+              <div>
+                <input type="text" placeholder="검색어를 입력하세요&hellip;" id="search-input">
+                <button class="fa fa-search" type="button" id="search">
+                </button>
+              </div>
+            </fieldset>
+          </form>
+        </footer>
+      </article>
+    </div>
+  </div>
+  <!-- End Top Background Image Wrapper -->
+  <div class="wrapper row3">
+    <main class="hoc container clear">
+      <!-- main body -->
+      <h1>검색 결과: <b><%=value%></b></h1>
+
+      <div id="container">
+        <section id="first">
+          <div class="inner">
+            <ul class="box_wrap">
+              <% for (var i=0; i < profile.length; i++){ %>
+              <li>
+                <div OnClick="location.href ='/guest/myhome?id=<%=profile[i].loginid%>'" style="cursor:pointer;">
+                  <div class="items">
+                    <img src="../images/backup/<%= profile[i].f_image %>"
+                      style="float: left;  margin: 0 32px 0 30px; width:180px; height:180px;" width="100px"
+                      height="100px" />
+                    <h3><%= profile[i].f_name %></h3>
+                    <p>
+                      <%= profile[i].f_tribe %>&nbsp;(<%= profile[i].f_gender %>)<br>
+                      <%= profile[i].f_birthday %></p>
+                    <p><%= profile[i].f_intro %></p>
+                  </div>
+              </li>
+              <% } %>
+
+          </div>
+          </ul>
+      </div>
+      </section>
+  </div>
+
+  </div>
+
+  <!-- ################################################################################################ -->
+  </div>
+  <!-- ################################################################################################ -->
+  <div class="wrapper row5">
+    <div id="copyright" class="hoc clear">
+      <!-- ################################################################################################ -->
+      <p class="fl_left"> Copyright &copy; 2022 - All Rights Reserved - <a href="#">그리다</a></p>
+      <p class="fl_right">당신의 삶을 <a target="_blank" href="https://www.os-templates.com/"
+          title="Free Website Templates">그리다</a></p>
+      <!-- ################################################################################################ -->
+    </div>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+  <!-- JAVASCRIPTS -->
+  <script src="layout/scripts/jquery.min.js"></script>
+  <script src="layout/scripts/jquery.backtotop.js"></script>
+  <script src="layout/scripts/jquery.mobilemenu.js"></script>
+  <script>
+    $('#search').click(function () {
+      var inputvalue = $('#search-input').val()
+      window.location.replace('/search?value=' + inputvalue);
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <title>타임라인</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="../layout/styles/layout_timeline.css" rel="stylesheet" type="text/css" media="all">
+</head>
+
+<body id="top">
+  <!-- Top Background Image Wrapper -->
+  <div class="bgded overlay" style="background-image:url('../images/demo/backgrounds/home.png');">
+    <div class="wrapper row1">
+      <header id="header" class="hoc clear">
+        <div id="logo" class="fl_left">
+          <div class="logo">
+            <h1><img src="../images/demo/logo.svg" style="margin-right: 6px; width:30px; height:30px;">
+              <a href="/">그리다</a>
+            </h1>
+          </div>
+        </div>
+        <nav id="mainav" class="fl_right">
+          <ul class="clear">
+            <li><a href="/login">나의 추모공간 만들기</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+    <div id="breadcrumb" class="hoc clear">
+    </div>
+    <!-- End Top Background Image Wrapper -->
+    <div class="wrapper row3">
+      <main class="hoc container clear">
+        <!-- main body -->
+        <div class="sidebar one_quarter first">
+          <div class="sdb_holder">
+            <img class="img" src="../images/backup/<%= profile[0].f_image %>" style="width:164px; height:164px;">
+            
+              <p><br>
+              <img class="img" src="../images/demo/id.png" style="width:20px; height:20px;">
+              <%= profile[0].f_name %><br>
+              <img class="img" src="../images/demo/breed.png" style="width:20px; height:20px; "> <%= profile[0].f_tribe %> (<%= profile[0].f_gender %>)<br>
+              <img class="img" src="../images/demo/anniversary.png" style="width:20x; height:20px;"> <%= profile[0].f_birthday %>
+            </p>
+
+            <br><br>
+          </div>
+          <nav class="sdb_holder">
+            <ul>
+              <li><a href="/guest/myhome?id=<%=login.id%>">홈</a></li>
+              <li><a href="/guest/timeline?id=<%=login.id%>">타임라인</a></li>
+              <li><a href="/guest/gallery?id=<%=login.id%>">갤러리</a>
+
+          </nav>
+        </div>
+          <div class="content three_quarter">
+
+
+            <!--타임라인-->
+            <div class="page">
+              <header class="heading">추억이 담긴 기억들을 그려보세요</header>
+              <br>
+              <!--타임라인 년도-->
+              <div class="timeline">
+                <div class="timeline__group">
+                  <% var year=2023; %>
+                    <% for (var j=2023; j> 1900; j--){ %>
+                      <% for (var m=12; m> 0; m--){ %>
+                        <% for (var n=31; n> 0; n--){ %>
+                          <% for (var i=0; i < posts.length; i++){ %>
+                            <% if (j==posts[i].year && m==posts[i].month && n==posts[i].day){ %>
+                              <% if(year !=posts[i].year){ %>
+                                <span class="timeline__year time" aria-hidden="true">
+                                  <%=posts[i].year%>
+                                </span>
+                                <% } %>
+                                  <!--타임라인 월일-->
+                                  <div class="timeline__cards">
+                                    <!--타임라인 월일-->
+                                    <div class="timeline__card card">
+
+                                      <ul class="menu2">
+
+                                        <header class="card__header">
+                                          <time class="time" datetime="2008-02-02">
+                                            <span class="time__month">
+                                              <%=posts[i].month%>월
+                                            </span>
+                                            <span class="time__day">&nbsp;<%=posts[i].day%>일</span>
+                                          </time>
+                                        </header>
+                                        <% if(posts[i].imagename){%>
+                                          <div class="card__content">
+                                            <img class="img" src="../images/backup/<%= posts[i].imagename %>"
+                                              style="width:160px; height:160px;">
+                                            <br><br>
+                                            <%=posts[i].comment%>
+                                              <br>
+                                              
+
+                                          </div>
+                                          <% } else { %>
+                                            <br>
+                                            <div class="card__content">
+                                              <%=posts[i].comment%>
+                                                <br>
+ 
+                                               
+
+                                            </div>
+                                            <% } %>
+                                    </div>
+                                    <br>
+                                  </div>
+                                  <% var year=posts[i].year; %>
+                                    <% } %>
+                                      <% } %>
+                                        <% } %>
+                                          <% } %>
+                                            <% } %>
+                </div>
+              </div>
+            </div>
+
+            <!-- / main body -->
+            <div class="clear"></div>
+      </main>
+    </div>
+    <div class="wrapper row5">
+      <div id="copyright" class="hoc clear">
+        <p class="fl_left">Copyright &copy; 2022 - All Rights Reserved - <a href="#">그리다</a></p>
+        <p class="fl_right">당신의 삶을 <a target="_blank" href="https://www.os-templates.com/"
+            title="Free Website Templates">그리다</a></p>
+      </div>
+    </div>
+    <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+    <!-- JAVASCRIPTS -->
+    <script>
+
+
+
+    </script>
+    <script src="../layout/scripts/jquery.min.js"></script>
+    <script src="../layout/scripts/jquery.backtotop.js"></script>
+    <script src="../layout/scripts/jquery.mobilemenu.js"></script>
+</body>
+
+</html>

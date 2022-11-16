@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <title>요청</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+  <style>
+    #timetable {
+      font-size: 12px;
+      margin-top: -0.5px;
+    }
+
+    .comment {
+      font-size: 14px;
+    }
+
+    #comments address {
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body id="top">
+  <!-- Top Background Image Wrapper -->
+  <div class="bgded overlay" style="background-image:url('../images/demo/backgrounds/home.png');">
+    <div class="wrapper row1">
+      <header id="header" class="hoc clear">
+        <div id="logo" class="fl_left">
+          <div class="logo">
+            <h1><img src="../images/demo/logo.svg" style="margin-right: 6px; width:30px; height:30px;">
+              <a href="/home">그리다</a>
+            </h1>
+          </div>
+        </div>
+        <nav id="mainav" class="fl_right">
+          <ul class="clear">
+            <li><a href="/myhome">나의 추모공간</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+    <div id="breadcrumb" class="hoc clear">
+    </div>
+    <!-- End Top Background Image Wrapper -->
+    <div class="wrapper row3">
+      <main class="hoc container clear">
+        <!-- main body -->
+        <div class="sidebar one_quarter first">
+          <div class="sdb_holder">
+            <img class="img" src="../images/backup/<%= profile[0].f_image %>" style="width:164px; height:164px;">
+            
+              <p><br>
+              <img class="img" src="../images/demo/id.png" style="width:20px; height:20px;">
+              <%= profile[0].f_name %><br>
+              <img class="img" src="../images/demo/breed.png" style="width:20px; height:20px; "> <%= profile[0].f_tribe %> (<%= profile[0].f_gender %>)<br>
+              <img class="img" src="../images/demo/anniversary.png" style="width:20x; height:20px;"> <%= profile[0].f_birthday %>
+            </p>
+
+          </div>
+          <nav class="sdb_holder">
+            <ul>
+              <li><a href="/myhome:<%=login.id%>">홈</a></li>
+              <li><a href="/timeline:<%=login.id%>">타임라인</a></li>
+              <li><a href="/gallery:<%=login.id%>">갤러리</a>
+              <li><a href="/setting">사용자 설정</a>
+                <ul>
+                  <li><a href="/request">요청</a></li>
+                </ul>
+          </nav>
+        </div>
+                <div class="content three_quarter">
+
+          <!--댓글 승인 및 거절 기능-->
+          <div id="comments">
+            <h1>댓글을 승인하면 <홈-댓글>에 반영됩니다</h1>
+            <br>
+            <p> 댓글 보기 </p>
+          </div>
+
+          <br>
+          <div id="comments">
+            <ul>
+              <% for (var i=0; i < posts.length; i++){ %>
+                <div class="comment_box">
+                  <li>
+                    <article>
+                      <header>
+                        <address id="name">
+                          <%= posts[i].name %>
+                        </address>
+                        <p id="timetable">
+                          <%= posts[i].date %>
+                        </p>
+                      </header>
+                      <div class="comment">
+                        <p>
+                          <%= posts[i].comment %>
+                        </p>
+                      </div>
+                    </article>
+                  </li>
+                  <div>
+                    <input type="submit" name="submit" value="댓글 승인" class="access2" data-id="<%= posts[i]._id %>">
+                    &nbsp;
+                    <input type="reset" name="reset" value="댓글 삭제" class="delete2" data-id="<%= posts[i]._id %>">
+                  </div>
+                  </form>
+                </div>
+                <% } %>
+            </ul>
+          </div>
+
+
+
+          <!-- / main body -->
+          <div class="clear"></div>
+      </main>
+    </div>
+    <div class="wrapper row5">
+      <div id="copyright" class="hoc clear">
+        <p class="fl_left">Copyright &copy; 2022 - All Rights Reserved - <a href="#">그리다</a></p>
+        <p class="fl_right">당신의 삶을 <a target="_blank" href="https://www.os-templates.com/"
+            title="Free Website Templates">그리다</a></p>
+      </div>
+    </div>
+    <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+
+
+    <!-- JAVASCRIPTS -->
+    <script src="../layout/scripts/jquery.min.js"></script>
+    <script src="../layout/scripts/jquery.backtotop.js"></script>
+    <script src="../layout/scripts/jquery.mobilemenu.js"></script>
+
+    <script>
+      $('.delete2').click(function (e) {
+        var 글번호 = e.target.dataset.id;
+        var 지금누른거 = $(this);
+
+        $.ajax({
+          method: 'delete',
+          url: '/delete2',
+          data: { _id: 글번호 }
+        }).done(function (result) {
+          console.log('성공');
+          지금누른거.parents('.comment_box').fadeOut();
+        }).fail(function () {
+          console.log('실패');
+        });
+      });
+    </script>
+
+    <script>
+      $('.access2').click(function (e) {
+        var 글번호 = e.target.dataset.id;
+        var 지금누른거 = $(this);
+
+        $.ajax({
+          method: 'DELETE',
+          url: '/access2',
+          data: { _id: 글번호 }
+        }).done(function (result) {
+          console.log('성공');
+          지금누른거.parents('.comment_box').fadeOut();
+        }).fail(function () {
+          console.log('실패');
+        });
+      });
+    </script>
+
+</body>
+
+</html>
