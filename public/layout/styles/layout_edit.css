@@ -1,0 +1,159 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+li {
+  list-style: none;
+}
+
+.wrap {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.edit {
+  width: 42%;
+  height: 700px;
+  background: white;
+  border-radius: 20px;
+  overflow: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.edit_img {
+  margin-top: 28px;
+  width: 80%;
+}
+/* ------------------------------------------------------------------------------------------------------------ */
+input[type=file]::file-selector-button {
+  width: 120px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid rgb(77,77,77);
+  border-radius: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  &:hover {
+    background: rgb(77,77,77);
+    color: #fff;
+  }
+}/* ------------------------------------------------------------------------------------------------------------ */
+
+img {
+ max-width: 20px;
+ max-height: 20px;
+}
+
+.edit_id {
+  margin-top: 28px;
+  width: 80%;
+}
+
+.edit_id input {
+  width: 80%;
+  height: 50px;
+  border-radius: 20px;
+  margin-top: 10px;
+  padding: 0px 20px;
+  border: 1px solid lightgray;
+  outline: none;
+}
+
+.edit_breed {
+  margin-top: 28px;
+  width: 80%;
+}
+
+.pl{
+    width: 200px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin-top: 10px;
+    padding: 12px 13px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.pl:focus{
+    border: 1px solid #9B51E0;
+    box-sizing: border-box;
+    border-radius: 20px;
+    outline: 3px solid #F8E4FF;
+    border-radius: 20px;
+}
+
+
+.edit_sex {
+  margin-top: 28px;
+  width: 80%;
+}
+
+.edit_anniversary {
+  margin-top: 28px;
+  width: 80%;
+}
+
+.edit_anniversary input {
+  width: 100%;
+  height: 50px;
+  border-radius: 20px;
+  margin-top: 10px;
+  padding: 0px 20px;
+  border: 1px solid lightgray;
+  outline: none;
+}
+
+.edit_write {
+  margin-top: 28px;
+  width: 80%;
+}
+
+.edit_write textarea {
+  width: 100%;
+  height: 50px;
+  border-radius: 20px;
+  margin-top: 10px;
+  padding: 0px 20px;
+  border: 1px solid lightgray;
+  outline: none;
+}
+
+.submit {
+  margin-top: 20px;
+  margin-left: 180px;
+  margin-bottom: 20px;
+  width: 30%;
+}
+
+.submit input {
+  width: 100%;
+  height: 50px;
+  border: 0;
+  outline: none;
+  border-radius: 30px;
+background: rgb(18,93,133);
+background: linear-gradient(90deg, rgba(18,93,133,1) 0%, rgba(41,114,150,1) 35%, rgba(119,197,237,1) 87%);
+  color: white;
+  font-size: 1.0em;
+  letter-spacing: 3px;
+}
