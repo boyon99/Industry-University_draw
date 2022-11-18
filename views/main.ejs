@@ -132,8 +132,8 @@
         <p>그리다를 통해 사랑하는 반려동물을 영원히 기억하세요<br>사랑하는 반려동물의 모든 순간을 확인하세요</p>
       </div>
       <ul class="nospace group ref-img">
-        <% for (var i=0; i < 6; i++){ %>
-        <li class="one_third"><a class="imgover" href="/guest/myhome?id=<%=profile[i].loginid%>"><img src="../images/backup/<%= profile[i].f_image %>" alt=""></a></li>
+        <% for (var i=6; i > 0; i--){ %>
+        <li class="one_third"><a class="imgover" href="/guest/myhome?id=<%=profile[i].loginid%>" style="object-fit:cover;"><img src="../images/backup/<%= profile[i].f_image %>" alt="" style="object-fit:cover;"></a></li>
         <% } %>
       </ul>
 

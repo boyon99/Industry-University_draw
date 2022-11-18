@@ -70,8 +70,9 @@
                 <form action="/upload" method="POST" enctype="multipart/form-data">
                   <div>
                     <input type="file" id="input-file" name="inputFile" />
-                    <br>
+                    <br><br>
                     <input type="submit" name="submit" value="사진 추가">
+                    <input name="id" value="/gallery:<%=login.id%>" style="display: none;">
                   </div>
                 </form>
                 <!--갤러리-->
@@ -100,7 +101,7 @@
             <!--갤러리 확대 및 이동-->
             <div class="preview_box">
               <i class="fa-solid fa-xmark" id="icon"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <input type="button" class="button" value="삭제">
+                <input type="button" class="button" value="삭제" style="display: none;">
               </i>
 
                 <div class="img_box">

@@ -62,6 +62,7 @@
             <div id="comments">
               <form action="/posts" method="POST" enctype="multipart/form-data">
                 <div class="block clear">
+                  <input name="id" value="/timeline:<%=login.id%>" style="display: none;">
                   <input type="date" name="starttime">
                   <textarea name="comment" id="comment" cols="25" rows="4"></textarea>
                 </div>

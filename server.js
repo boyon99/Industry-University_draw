@@ -233,7 +233,7 @@ function myhomelogin(req, res, next) {
 /* */
 /* (연결) 요청 페이지 - 작성한 댓글 불러오기 : /request로 get 요청 시 저장된 데이터 보여줌 */
 app.get('/request', function (req, res) {
-    db2.collection('comment').find().toArray(function (err, result) {
+    db2.collection('comment').find({ loginid: req.user.id }).toArray(function (err, result) {
         /* 프로필 데이터 전송 */
         
         db2.collection('profile').find({ loginid: req.user.id }).toArray(function (err, result2) {
@@ -313,7 +313,7 @@ app.post('/upload', upload.single('inputFile'), function (req, res) {
             이때 {수정값} 항목에 연산자 사용시 { $연산자 : {수정값}}으로 작성하게 된다 */
             db2.collection('counter').updateOne({ name: '게시물갯수' }, { $inc: { totalPost: 1 } }, function (err, result) {
                 if (err) { return console.log(err) };
-                res.redirect('/gallery');
+                res.redirect('' + req.body.id);
             });
         });
     });
@@ -354,7 +354,7 @@ app.post('/posts', upload.single('inputFile2'), function (req, res) {
                     console.log('저장완료');
                     db2.collection('counter').updateOne({ name: '게시물갯수' }, { $inc: { totalPost: 1 } }, function (err, result) {
                         if (err) { return console.log(err) };
-                        res.redirect('/timeline');
+                        res.redirect('' + req.body.id);
                     });
                 });
             });
@@ -370,7 +370,7 @@ app.post('/posts', upload.single('inputFile2'), function (req, res) {
                 console.log('저장완료');
                 db2.collection('counter').updateOne({ name: '게시물갯수' }, { $inc: { totalPost: 1 } }, function (err, result) {
                     if (err) { return console.log(err) };
-                    res.redirect('/timeline');
+                    res.redirect('' + req.body.id);
                 });
             });
         });
