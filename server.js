@@ -87,7 +87,7 @@ app.get('/search', function (req, res) {
                   index: 'ProfileSearch',
                   text: {
                     query: req.query.value,
-                    path: ['f_name', 'f_tribe', 'f_gender', 'f_intro', 'f_birthday']  // 제목날짜 둘다 찾고 싶으면 ['제목', '날짜']
+                    path: ['f_name', 'f_tribe', 'f_gender', 'f_intro', 'f_birthday', 'f_update']  // 제목날짜 둘다 찾고 싶으면 ['제목', '날짜']
                   }
                 }
               }

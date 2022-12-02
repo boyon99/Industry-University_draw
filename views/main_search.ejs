@@ -62,9 +62,13 @@
   <div class="wrapper row3">
     <main class="hoc container clear">
       <!-- main body -->
-      <h1>검색 결과: <b><%=value%></b></h1>
+      <% if(value === 'Y'){ %>
+      <h1>검색 결과: <b>전체</b></h1>
+      <% } else { %>
+        <h1>검색 결과: <b><%=value%></b></h1>
+        <% } %>
 
-      <div id="container">
+        <div id="container">
         <section id="first">
           <div class="inner">
             <ul class="box_wrap">
