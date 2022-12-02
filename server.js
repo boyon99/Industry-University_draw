@@ -230,6 +230,48 @@ function myhomelogin(req, res, next) {
 
 
 
+
+
+
+
+/* */
+/* (연결) 게시판 페이지 */
+app.get('/info', function (req, res) {
+
+    db2.collection('notice').find().toArray(function (err, result) {
+            res.render('information.ejs', { notice: result, id:req.user});
+        });
+});
+
+app.get('/info/write', function (req, res) {
+    res.render('information_write.ejs');
+});
+
+app.post('/infowrite', function (req, res) {
+    let today = new Date();
+    let time = today.toLocaleDateString();
+
+    db2.collection('notice').insertOne({ title: req.body.title, time: time, content: req.body.content, loginid: req.user.id }, function () {
+            console.log('저장완료');
+            res.redirect('/info');
+    });
+});
+
+app.get('/info/read:id', function (req, res) {
+    db2.collection('notice').find({ loginid: req.user.id }).toArray(function (err, result) {
+        _id: parseInt(req.user.id);
+            res.render('information_reading.ejs', { notice: result, login: req.user });
+        });
+});
+
+
+
+
+
+
+
+
+
 /* */
 /* (연결) 요청 페이지 - 작성한 댓글 불러오기 : /request로 get 요청 시 저장된 데이터 보여줌 */
 app.get('/request', function (req, res) {

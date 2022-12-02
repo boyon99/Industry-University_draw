@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>글읽기</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="../layout/styles/layout_information.css" rel="stylesheet" type="text/css" media="all">
+<style>
+  #timetable {
+    font-size: 12px;
+    margin-top: -0.5px;
+  }
+
+  .comment {
+    font-size: 14px;
+  }
+
+  #comments address{
+    font-size: 14px;
+  }
+ 
+
+</style>
+
+</head>
+<body id="top">
+<!-- Top Background Image Wrapper -->
+<div class="bgded overlay" style="background-image:url('../images/demo/backgrounds/home.png');">
+  <div class="wrapper row1">
+    <header id="header" class="hoc clear"> 
+      <div id="logo" class="fl_left">
+	<div class="logo">
+        <h1><img src="../images/demo/logo.svg"
+		style= "margin-right: 6px; width:30px; height:30px;">
+	<a href="/">그리다</a></h1></div>
+      </div>
+      <nav id="mainav" class="fl_right">
+        <ul class="clear">
+          <li><a href="../pages/information.html">정보공유</a></li>
+          <li><a href="/myhome">나의 추모공간</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+  <div id="breadcrumb" class="hoc clear"> 
+  </div>
+<!-- End Top Background Image Wrapper -->
+<div class="wrapper row3">
+  <section class="notice">
+    <div class="page-title">
+          <div class="container">
+              <h3>정보공유</h3>
+          </div>
+      </div>
+ 
+<!-- board list area -->
+  <div id="board-list">
+      <div class="container">
+          <table class="board-table">
+              <thead>
+              <tr>
+                  <th scope="col" class="th-num">제목</th>
+                  <th scope="col" class="th-title"><%= notice[0].title %></th>
+
+                  
+              </tr>
+              </thead>
+              <tbody>
+
+              <tr>
+                  <td>내용</td>
+                  <td><%= notice[0].content %></td>
+              </tr>
+              </tbody>
+          </table>
+
+          <a href="/info/write" class="btn btn-dark" style="float: right; padding: 6px 26px;">글쓰기</a>
+          <a href="../pages/information.html" class="btn btn-dark" style="float: right; padding: 6px 26px; margin: 0 6px 0 0;">뒤로가기</a>
+
+          <!--댓글기능-->
+          <!-- <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <title>Page Title</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" type="text/css" media="screen" href="index.css">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+          
+        </head>
+        <body>
+            <div id="form-commentInfo">
+                <div id="comment-count">댓글 <span id="count">0</span></div>
+                <input id="comment-input" placeholder="댓글을 입력해 주세요.">
+                <button id="submit">등록</button>
+            </div>
+            <div id=comments>
+        
+            </div>
+            <script src="index.js"></script>
+        </body> -->
+        
+      </div>
+  </div>
+</section>
+    
+    <!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row5">
+  <div id="copyright" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <p class="fl_left">Copyright &copy; 2022 - All Rights Reserved - <a href="#">그리다</a></p>
+    <p class="fl_right">당신의 삶을 <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">그리다</a></p>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="../public/layout/scripts/jquery.min.js"></script>
+<script src="../public/layout/scripts/jquery.backtotop.js"></script>
+<script src="../public/layout/scripts/jquery.mobilemenu.js"></script>
+<script src="../public/layout/scripts/reading.js"></script>
+</body>
+</html>
