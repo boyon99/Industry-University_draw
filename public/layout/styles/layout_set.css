@@ -413,7 +413,7 @@ input[type="radio"]:checked + label::before{
     margin-top: 10px;
 }
 .link_rel > input{
-    width: 400px;
+    width: 700px;
     font-size: 15px;
     font-weight: 500;
     font-family: var(--font--normal);

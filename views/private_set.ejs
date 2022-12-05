@@ -25,7 +25,7 @@
       <!-- ################################################################################################ -->
       <nav id="mainav" class="fl_right">
         <ul class="clear">
-          <li><a href="/myhome">나의 추모공간</a></li>
+          <li><a href="/myhome:<%=login.id%>">나의 추모공간</a></li>
         </ul>
       </nav>
       <!-- ################################################################################################ -->
@@ -61,12 +61,12 @@
           <li><a href="/myhome:<%=login.id%>">홈</a></li>
           <li><a href="/timeline:<%=login.id%>">타임라인</a></li>
           <li><a href="/gallery:<%=login.id%>">갤러리</a>
-          <li><a href="/setting">사용자 설정</a>
+          <li><a href="/setting:<%=login.id%>">사용자 설정</a>
             <ul>
-              <li><a href="/request">요청</a></li>
+              <li><a href="/request:<%=login.id%>">요청</a></li>
             </ul>
       </nav>
-    </div>
+</div>
     <div class="content three_quarter">
 
 
@@ -82,7 +82,7 @@
                 <div class="share_set">공유 링크</div>
                 <div class="share_select">
                     <div class="link_rel">
-                        <input id="copy_text" value="localhost:8080/guest/myhome?id=<%=login.id%>" readonly>
+                        <input id="copy_text" value="https://circular-truck-368815.du.r.appspot.com/guest/myhome?id=<%=login.id%>" readonly>
                     </div>
                     <button class="link_copy" onclick="linkCopy()">URL복사</button>
                 </div>

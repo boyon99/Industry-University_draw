@@ -32,12 +32,12 @@
 	<div class="logo">
         <h1><img src="../images/demo/logo.svg"
 		style= "margin-right: 6px; width:30px; height:30px;">
-	<a href="/">그리다</a></h1></div>
+	<a href="/home">그리다</a></h1></div>
       </div>
       <nav id="mainav" class="fl_right">
         <ul class="clear">
-          <li><a href="../pages/information.html">정보공유</a></li>
-          <li><a href="/myhome">나의 추모공간</a></li>
+          <li><a href="/info">정보공유</a></li>
+          <li><a href="/myhome:<%=login.id%>">나의 추모공간</a></li>
         </ul>
       </nav>
     </header>
@@ -75,7 +75,7 @@
           </table>
 
           <a href="/info/write" class="btn btn-dark" style="float: right; padding: 6px 26px;">글쓰기</a>
-          <a href="../pages/information.html" class="btn btn-dark" style="float: right; padding: 6px 26px; margin: 0 6px 0 0;">뒤로가기</a>
+          <a href="/info" class="btn btn-dark" style="float: right; padding: 6px 26px; margin: 0 6px 0 0;">뒤로가기</a>
 
           <!--댓글기능-->
           <!-- <head>

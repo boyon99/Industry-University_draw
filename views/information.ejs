@@ -32,12 +32,12 @@
 	<div class="logo">
         <h1><img src="../images/demo/logo.svg"
 		style= "margin-right: 6px; width:30px; height:30px;">
-	<a href="/">그리다</a></h1></div>
+	<a href="/home">그리다</a></h1></div>
       </div>
       <nav id="mainav" class="fl_right">
         <ul class="clear">
           <li><a href="/info">정보공유</a></li>
-          <li><a href="/myhome">나의 추모공간</a></li>
+          <li><a href="/myhome:<%=login.id%>">나의 추모공간</a></li>
         </ul>
       </nav>
     </header>
@@ -70,7 +70,7 @@
                     <% for(var i=0; i < notice.length; i++){ %>
                   <tr>
                       <th>
-                        <a href="/info/read:<%=id.id%>"><%= notice[i].title %></a>
+                        <a href="/info/read?value=<%=notice[i].loginid%>"><%= notice[i].title %></a>
                       </th>
                       <td><%= notice[i].loginid %></td>
                       <td><%= notice[i].time %></td>

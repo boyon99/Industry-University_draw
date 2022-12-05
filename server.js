@@ -58,12 +58,25 @@ app.get('/', function (req, res) {
         res.render('main.ejs', {profile: result });
     });
 });
-app.get('/home', function (req, res) {
+app.get('/home',homelogin, function (req, res) {
     db2.collection('profile').find({ f_update : "Y" }).toArray(function (err, result) {
         res.render('main_login.ejs', {profile: result, login: req.user });
     });
 
 });
+
+/* 로그인 확인 */
+function homelogin(req, res, next) {
+
+    if (req.user) {
+        next()
+    }
+    else {
+        res.redirect('/');
+        /* 방문자 페이지 보여주기 */
+    }
+}
+
 
 /* (연결) 검색 페이지 
 app.get('/search', function (req, res) {
@@ -162,6 +175,39 @@ app.post('/signup', function (req, res) {
 
 
 /* */
+/* (연결) 게시판 페이지 */
+app.get('/info', function (req, res) {
+
+    db2.collection('notice').find().toArray(function (err, result) {
+            res.render('information.ejs', { notice: result, id:req.user, login: req.user});
+        });
+});
+
+app.get('/info/write', function (req, res) {
+    res.render('information_write.ejs',{login: req.user});
+});
+
+app.post('/infowrite', function (req, res) {
+    let today = new Date();
+    let time = today.toLocaleDateString();
+
+    db2.collection('notice').insertOne({ title: req.body.title, time: time, content: req.body.content, loginid: req.user.id }, function () {
+            console.log('저장완료');
+            res.redirect('/info');
+    });
+});
+
+app.get('/info/read', function (req, res) {
+    db2.collection('notice').find({ loginid: req.query.value }).toArray(function (err, result) {
+            res.render('information_reading.ejs', { notice: result, login: req.user });
+        });
+});
+
+
+
+
+
+/* */
 /* (연결) 마이홈 페이지 - 데이터 전달 */
 app.get('/myhome:id', myhomelogin, function (req, res) {
     db2.collection('commentAccess').find({ id: req.user.id }).toArray(function (err, result) {
@@ -233,49 +279,11 @@ function myhomelogin(req, res, next) {
 
 
 
-
-/* */
-/* (연결) 게시판 페이지 */
-app.get('/info', function (req, res) {
-
-    db2.collection('notice').find().toArray(function (err, result) {
-            res.render('information.ejs', { notice: result, id:req.user});
-        });
-});
-
-app.get('/info/write', function (req, res) {
-    res.render('information_write.ejs');
-});
-
-app.post('/infowrite', function (req, res) {
-    let today = new Date();
-    let time = today.toLocaleDateString();
-
-    db2.collection('notice').insertOne({ title: req.body.title, time: time, content: req.body.content, loginid: req.user.id }, function () {
-            console.log('저장완료');
-            res.redirect('/info');
-    });
-});
-
-app.get('/info/read:id', function (req, res) {
-    db2.collection('notice').find({ loginid: req.user.id }).toArray(function (err, result) {
-        _id: parseInt(req.user.id);
-            res.render('information_reading.ejs', { notice: result, login: req.user });
-        });
-});
-
-
-
-
-
-
-
-
-
 /* */
 /* (연결) 요청 페이지 - 작성한 댓글 불러오기 : /request로 get 요청 시 저장된 데이터 보여줌 */
-app.get('/request', function (req, res) {
-    db2.collection('comment').find({ loginid: req.user.id }).toArray(function (err, result) {
+app.get('/request:id', function (req, res) {
+    db2.collection('comment').find({ id: req.user.id }).toArray(function (err, result) {
+        _id: parseInt(req.user.id);
         /* 프로필 데이터 전송 */
         
         db2.collection('profile').find({ loginid: req.user.id }).toArray(function (err, result2) {
@@ -284,8 +292,9 @@ app.get('/request', function (req, res) {
     });
 });
 
-app.get('/setting', function (req, res) {
+app.get('/setting:id', function (req, res) {
     /* 프로필 데이터 전송 */
+    _id: parseInt(req.user.id);
     db2.collection('profile').find({ loginid: req.user.id }).toArray(function (err, result2) {
         res.render('private_set.ejs', { profile: result2, login: req.user });
     });
@@ -428,6 +437,7 @@ app.get('/guest/myhome', function (req, res) {
     var _url = req.url;
     var queryData = url.parse(_url, true).query;
     console.log(queryData.id);
+
 
     db2.collection('commentAccess').find({ id: queryData.id }).toArray(function (err, result) {
         /* 프로필 데이터 전송 */
