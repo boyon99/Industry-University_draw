@@ -17,5 +17,5 @@ npm install multer <i>// image (upload)</i>
 1. app.yqml 파일 생성하기<br>
 2. google cloud platform에서 app engine을 선택하여 만들기<br>
 3. cloud sdk 설치하기<br>
-4. sdk 터미널에 gcloud init와 gcloud app deploy 입력<br>
+4. sdk 터미널에 gcloud init 입력 -> 폴더 위치를 yqml파일이 있는 곳으로 이동 -> gcloud app deploy 입력<br>
 <h4> https://circular-truck-368815.du.r.appspot.com/ </h4>
